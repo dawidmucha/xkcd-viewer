@@ -1,11 +1,11 @@
 import React from 'react'
 
 class Image extends React.Component {
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
 
 		this.state = {
-			img: 'https://imgs.xkcd.com/comics/unpopular_opinions.png',
+			img: undefined,
 			alt: 'yee haw'
 		}
 	}
@@ -13,7 +13,9 @@ class Image extends React.Component {
 	render() {
 		return (
 			<div>
-				<img src={this.state.img} alt={this.state.alt} />
+				<img src={this.props.img} alt={this.state.alt} />
+				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+				hi
 			</div>
 		)
 	}
