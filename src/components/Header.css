@@ -1,16 +1,14 @@
-body {
-	margin: 0;
-}
-
 #headerContainer {
 	position: sticky;
 	top: 0;
+	background-color: #eeeeee;
+	border-bottom: 2px solid #e8e8e8;
 }
 
 #form {
 	display: grid;
-	grid-template-columns: 5% 5% auto auto 5% 5%;
-	grid-template-rows: auto auto auto auto;
+	grid-template-columns: 3rem 3rem auto auto 3rem 3rem;
+	grid-template-rows: 2.5rem 2.5rem auto auto;
 }
 
 #range {
@@ -21,14 +19,30 @@ body {
 	grid-column: span 2;
 }
 
+#id {
+	margin: auto 0;
+	text-align: right;
+	padding-right: 1rem;
+}
+
+#date {
+	margin: auto 0;
+	padding-left: 1rem;
+}
+
 #random {
 	grid-column: span 2;
 }
 
 #title {
 	grid-column: span 5;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 3rem;
+	margin: 0;
 }
 
 #alt {
 	grid-column: span 5;
+	text-align: center;
 }

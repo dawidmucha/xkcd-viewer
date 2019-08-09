@@ -1,13 +1,14 @@
 import React from 'react'
 import Header from './Header'
 import Image from './Image'
+import './App.css'
 
 class App extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      maxNum: 0,
+      maxNum: undefined,
       month: undefined,
       id: undefined,
       year: undefined,
@@ -15,10 +16,14 @@ class App extends React.Component {
       alt: undefined,
       img: undefined,
       title: undefined,
-      day: undefined
+      day: undefined,
+      transcriptBool: false
     }
 
     this.handleFormChange = this.handleFormChange.bind(this)
+    this.handleTranscriptButton = this.handleTranscriptButton.bind(this)
+
+    this.child = React.createRef()
   }
 
   componentDidMount() {
@@ -30,10 +35,13 @@ class App extends React.Component {
         id: data.num 
       })
       this.handleFormChange(this.state.id)
+      this.child.current.handleButtonFix()
     }).catch(e => {
       console.log(e)
       return e
     })
+
+    
   }
 
   handleFormChange(id) {
@@ -53,13 +61,19 @@ class App extends React.Component {
       })
     })
   }
+
+  handleTranscriptButton() {
+    this.setState(state => {
+        return { transcriptBool: !state.transcriptBool }
+    })
+  }
   
   render() {
     return (
-      <div>
-        <Header maxNum={this.state.maxNum} handleFormChange={this.handleFormChange} id={this.state.id} day={this.state.day} month={this.state.month} year={this.state.year} transcript={this.state.transcript} alt={this.state.alt} title={this.state.title} />
-        <Image img={this.state.img} />
-        <p>by Dawid Mucha | source code: soon™</p>
+      <div id='appContainer'>
+        <Header ref={this.child} maxNum={this.state.maxNum} handleFormChange={this.handleFormChange} handleTranscriptButton={this.handleTranscriptButton} id={this.state.id} day={this.state.day} month={this.state.month} year={this.state.year} transcript={this.state.transcript} alt={this.state.alt} title={this.state.title} />
+        {this.state.transcriptBool ? <p id='transcriptText'>{this.state.transcript ? this.state.transcript : 'Transcript unavailable for this comic'}</p> : <Image img={this.state.img} />}
+        <p id='footer'>by Dawid Mucha | source code: soon™</p>
       </div>
     )
   }

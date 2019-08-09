@@ -1,4 +1,5 @@
 import React from 'react'
+import './Image.css'
 
 class Image extends React.Component {
 	constructor(props) {
@@ -12,10 +13,8 @@ class Image extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<img src={this.props.img} alt={this.state.alt} />
-				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-				hi
+			<div id='imageContainer'>
+				<img id='image' src={this.props.img} alt={this.state.alt} />
 			</div>
 		)
 	}
